@@ -1,11 +1,11 @@
 {
-  "name": "monolambda.com",
-  "description": "open source front-end for monolambda.com",
+  "name": "hashtagwars-api",
+  "description": "open source websockets server for hashtagwars",
   "version": "1.0.0",
   "author": "levsthings",
   "repository": {
     "type": "git",
-    "url": "https://github.com/monolambda/monolambda"
+    "url": "https://github.com/levsthings/hashtagwars-api"
   },
   "main": "index.js",
   "scripts": {
