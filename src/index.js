@@ -12,7 +12,7 @@ wss.on('connection', function connection(ws) {
     }
 
     const firstStream = stream(client, '#MondayMotivation')
-    const secondStream = stream(client, '#Trump')
+    const secondStream = stream(client, '#TuesdayMotivation')
 
     firstStream.on('data', event => ws.send(`#MondayMotivation: ${scores.first++}`))
     firstStream.on('error', (error) => {
