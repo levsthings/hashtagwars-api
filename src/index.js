@@ -6,6 +6,7 @@ const {validateMessage} = require('./validateMessage')
 
 const wss = new WebSocket.Server({ port: 8080 })
 
+// TODO: Block multiple connections
 wss.on('connection', (ws) => {
     ws.on('message', (msg) => {
         const isValid = validateMessage(msg)
@@ -14,12 +15,20 @@ wss.on('connection', (ws) => {
             throw new Error('Invalid message from client')
             // TODO: Close connection
         } else {
-            isValid.tags.map((hashtag) => {
-                let score = 0
+            const {tags} = isValid
+            const data = {
+                [tags[0]]: 0,
+                [tags[1]]: 0
+            }
+            tags.map((hashtag) => {
                 const hashtagStream = stream(client, hashtag)
 
-                hashtagStream.on('data', event => ws.send(`${hashtag}: ${score++}`))
+                hashtagStream.on('data', (event) => {
+                    data[hashtag]++
+                    ws.send(JSON.stringify(data))
+                })
                 hashtagStream.on('error', (error) => {
+                    // TODO: Send an error object
                     throw error
                 })
             })
