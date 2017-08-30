@@ -26,6 +26,7 @@ wss.on('connection', (ws) => {
                     trackedData = R.evolve({[hashtag]: R.inc}, trackedData)
                     ws.send(JSON.stringify(trackedData))
                 })
+
                 hashtagStream.on('error', (error) => {
                     // TODO: Send an error object
                     throw error
