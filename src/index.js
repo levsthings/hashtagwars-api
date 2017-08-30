@@ -1,4 +1,5 @@
 'use strict'
+const R = require('ramda')
 const WebSocket = require('ws')
 const {stream} = require('./streams')
 const {client} = require('./vendor/twitter')
@@ -16,16 +17,14 @@ wss.on('connection', (ws) => {
             // TODO: Close connection
         } else {
             const {tags} = isValid
-            const data = {
-                [tags[0]]: 0,
-                [tags[1]]: 0
-            }
+            let trackedData = R.fromPairs(R.map(key => [key, 0], tags))
+
             tags.map((hashtag) => {
                 const hashtagStream = stream(client, hashtag)
 
                 hashtagStream.on('data', (event) => {
-                    data[hashtag]++
-                    ws.send(JSON.stringify(data))
+                    trackedData = R.evolve({[hashtag]: R.inc}, trackedData)
+                    ws.send(JSON.stringify(trackedData))
                 })
                 hashtagStream.on('error', (error) => {
                     // TODO: Send an error object
