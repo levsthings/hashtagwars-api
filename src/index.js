@@ -6,9 +6,10 @@ const {stream} = require('./streams')
 const {client} = require('./vendor/twitter')
 const {validateMessage} = require('./validateMessage')
 
-const wss = new WebSocket.Server({ port: 8080 })
+const wss = new WebSocket.Server({ port: 8081 })
 
 wss.on('connection', (ws) => {
+    logNotify('Connection opened')
     ws.on('message', (msg) => {
         const isValid = validateMessage(msg)
 
@@ -26,8 +27,7 @@ wss.on('connection', (ws) => {
                     ws.send(JSON.stringify(trackedData))
                 })
 
-                hashtagStream.on('error', (error) => {
-                    logError('Twitter Stream Error', error)
+                hashtagStream.on('error', () => {
                     hashtagStream.destroy()
                     ws.terminate()
                 })
@@ -35,10 +35,9 @@ wss.on('connection', (ws) => {
 
             ws.on('close', () => {
                 logNotify('Connection closed')
-                ws.terminate()
             })
             ws.on('error', (error) => {
-                logError('Error caught', error)
+                logError(error)
                 ws.terminate()
             })
         }
