@@ -1,4 +1,5 @@
 'use strict'
+const express = require('express')
 const R = require('ramda')
 const WebSocket = require('ws')
 const {logError, logNotify} = require('../utils/')
@@ -6,9 +7,12 @@ const {stream} = require('./streams')
 const {client} = require('./vendor/twitter')
 const {validateMessage} = require('./validateMessage')
 
-const wss = new WebSocket.Server({
-    port: 8080
-})
+const PORT = process.env.PORT || 3001
+
+const server = express()
+    .listen(PORT, () => logNotify(`Listening at ${PORT}`))
+
+const wss = new WebSocket.Server({server})
 
 wss.on('connection', (ws) => {
     logNotify('Connection opened')
