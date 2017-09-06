@@ -9,7 +9,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "export NODE_ENV=production || SET \"NODE_ENV=production\" && node src/index.js",
     "dev": "nodemon src/index",
     "test": "npm run lint",
     "lint": "eslint ./src/**/* --fix --color",
