@@ -1,5 +1,5 @@
 'use strict'
-const {logError, logNotify, logSuccess, parseJson} = require('../utils')
+const {logError, logNotify, logSuccess, parseJson} = require('../../utils')
 
 let config
 

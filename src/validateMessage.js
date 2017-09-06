@@ -5,15 +5,17 @@ exports.validateMessage = (msg) => {
     try {
         parse = JSON.parse(msg)
     } catch (err) {
-        console.error(err)
         return false
     }
 
-    const isValid = typeof parse.tags === 'object' && parse.tags.length === 2
+    const isValidStructure = obj => (typeof obj.tags === 'object') && (obj.tags.length === 2)
+    const areValidTags = (arr) => {
+        return arr.map(i => typeof i === 'string' && i.length >= 2).filter(() => true)
+    }
 
-    if (!isValid) {
-        return false
-    } else {
+    if (isValidStructure(parse) && areValidTags(parse.tags).length === 2) {
         return parse
+    } else {
+        return false
     }
 }

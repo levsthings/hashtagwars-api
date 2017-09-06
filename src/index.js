@@ -1,12 +1,14 @@
 'use strict'
 const R = require('ramda')
 const WebSocket = require('ws')
-const {logError, logNotify} = require('../scripts/utils/')
+const {logError, logNotify} = require('../utils/')
 const {stream} = require('./streams')
 const {client} = require('./vendor/twitter')
 const {validateMessage} = require('./validateMessage')
 
-const wss = new WebSocket.Server({ port: 8081 })
+const wss = new WebSocket.Server({
+    port: 8080
+})
 
 wss.on('connection', (ws) => {
     logNotify('Connection opened')
@@ -14,6 +16,7 @@ wss.on('connection', (ws) => {
         const isValid = validateMessage(msg)
 
         if (!isValid) {
+            logError('Invalid message, terminating connection')
             ws.terminate()
         } else {
             const {tags} = isValid
