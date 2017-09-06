@@ -26,6 +26,7 @@
     ]
   },
   "dependencies": {
+    "chalk": "^2.1.0",
     "express": "^4.15.4",
     "ramda": "^0.24.1",
     "twitter": "^1.7.1",
@@ -33,7 +34,6 @@
   },
   "devDependencies": {
     "@monolambda/eslint-config": "^1.4.5",
-    "chalk": "^2.1.0",
     "eslint": "^4.5.0",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.4"
