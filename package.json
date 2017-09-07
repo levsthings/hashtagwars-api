@@ -37,5 +37,9 @@
     "eslint": "^4.5.0",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.4"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^3.0.2",
+    "utf-8-validate": "^3.0.3"
   }
 }

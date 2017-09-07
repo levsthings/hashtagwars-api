@@ -9,11 +9,11 @@ exports.validateMessage = (msg) => {
     }
 
     const isValidStructure = obj => (typeof obj.tags === 'object') && (obj.tags.length === 2)
-    const areValidTags = (arr) => {
-        return arr.map(i => typeof i === 'string' && i.length >= 2).filter(() => true)
-    }
+    const areValidTags = arr => arr
+        .map(i => (typeof i === 'string') && (i.length >= 2))
+        .filter(() => true)
 
-    if (isValidStructure(parse) && areValidTags(parse.tags).length === 2) {
+    if (isValidStructure(parse) && (areValidTags(parse.tags).length === 2)) {
         return parse
     } else {
         return false

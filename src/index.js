@@ -2,9 +2,9 @@
 const express = require('express')
 const R = require('ramda')
 const WebSocket = require('ws')
+const {client} = require('./vendor/twitter')
 const {logError, logNotify} = require('../utils/')
 const {stream} = require('./streams')
-const {client} = require('./vendor/twitter')
 const {validateMessage} = require('./validateMessage')
 
 const PORT = process.env.PORT || 3001

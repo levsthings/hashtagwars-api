@@ -1,7 +1,7 @@
 'use strict'
 /* eslint no-console: off */
-const fs = require('fs')
 const chalk = require('chalk')
+const fs = require('fs')
 
 exports.parseJson = (source, encoding) => JSON.parse((fs.readFileSync(source, encoding)))
 exports.logError = message => console.log(chalk.red(`Error: ${message}\n`))
