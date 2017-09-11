@@ -1,5 +1,5 @@
 'use strict'
-const {logError, logNotify, logSuccess, parseJson} = require('../../utils')
+const {logNotify, logSuccess, parseJson} = require('../../utils')
 
 let config
 
@@ -7,9 +7,7 @@ try {
     config = parseJson('./scripts/config/config.json', 'utf8')
     logSuccess(`Local key/value pairs for project configuration found successfuly.`)
 } catch (err) {
-    (process.env.consumer_key && process.env.consumer_secret && process.env.access_token_key && process.env.access_token_secret)
-        ? logNotify(`There are no local key/value pairs for project configuration, environment variables will be used.`)
-        : logError(`There are no local key value/pairs or environment variables for project configuration..`)
+    logNotify(`There are no local key/value pairs for project configuration, environment variables will be used.`)
 }
 
 exports.ENV = {
