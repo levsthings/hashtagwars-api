@@ -1,9 +1,9 @@
 'use strict'
 exports.validateMessage = (msg) => {
-    let parse
+    let parsed
 
     try {
-        parse = JSON.parse(msg)
+        parsed = JSON.parse(msg)
     } catch (err) {
         return false
     }
@@ -13,8 +13,8 @@ exports.validateMessage = (msg) => {
         .map(i => (typeof i === 'string') && (i.length >= 2))
         .filter(() => true)
 
-    if (isValidStructure(parse) && (areValidTags(parse.tags).length === 2)) {
-        return parse
+    if (isValidStructure(parsed) && (areValidTags(parsed.tags).length === 2)) {
+        return parsed
     } else {
         return false
     }
