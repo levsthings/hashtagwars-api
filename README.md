@@ -12,6 +12,6 @@ A WebSocket server running behind an Express proxy.
 
 `npm start` for production mode.
 
-### Frontend
+### Front-End
 
-Frontend lives [here.](https://github.com/levsthings/hashtagwars/)
+Front-End lives [here.](https://github.com/levsthings/hashtagwars/)
