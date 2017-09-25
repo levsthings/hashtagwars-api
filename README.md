@@ -1,4 +1,4 @@
-<h1 align='center'>Open Source Back-End For Hashtagwars</h1>
+<h1 align='center'>Open Source Back-end For Hashtagwars</h1>
 
 [![Build Status](https://img.shields.io/circleci/project/github/levsthings/hashtagwars-api.svg?style=flat-square)](https://circleci.com/gh/levsthings/hashtagwars-api.svg?style=svg)
 
@@ -12,6 +12,6 @@ A WebSocket server running behind an Express proxy.
 
 `npm start` for production mode.
 
-### Front-End
+### Front-end
 
-Front-End lives [here.](https://github.com/levsthings/hashtagwars/)
+Front-end lives [here.](https://github.com/levsthings/hashtagwars/)
