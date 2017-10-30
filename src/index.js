@@ -9,8 +9,7 @@ const {validateMessage} = require('./validateMessage')
 
 const PORT = process.env.PORT || 3001
 
-const server = express()
-    .listen(PORT, () => logNotify(`Listening at ${PORT}`))
+const server = express().listen(PORT, () => logNotify(`Listening at ${PORT}`))
 
 const wss = new WebSocket.Server({server})
 
@@ -21,12 +20,12 @@ wss.on('connection', (ws) => {
 
         if (!isValid) {
             logError('Invalid message, terminating connection')
-            ws.terminate()
+            ws.close(1002)
         } else {
             const {tags} = isValid
             let trackedData = R.fromPairs(R.map(key => [key, 0], tags))
 
-            tags.map((hashtag) => {
+            tags.forEach((hashtag) => {
                 const hashtagStream = stream(client, hashtag)
 
                 hashtagStream.on('data', (event) => {
@@ -36,7 +35,11 @@ wss.on('connection', (ws) => {
 
                 hashtagStream.on('error', () => {
                     hashtagStream.destroy()
-                    ws.terminate()
+                    ws.close(1001)
+                })
+
+                ws.on('close', () => {
+                    hashtagStream.destroy()
                 })
             })
 
@@ -45,7 +48,7 @@ wss.on('connection', (ws) => {
             })
             ws.on('error', (error) => {
                 logError(error)
-                ws.terminate()
+                ws.close(1000)
             })
         }
     })

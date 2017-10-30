@@ -1,54 +1,49 @@
 {
-  "name": "hashtagwars-api",
-  "description": "open source back-end for hashtagwars",
-  "version": "1.0.0",
-  "author": "levsthings",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/levsthings/hashtagwars-api"
-  },
-  "main": "index.js",
-  "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index",
-    "test": "jest",
-    "lint": "eslint ./src/**/* --fix --color",
-    "precommit": "lint-staged"
-  },
-  "engines": {
-    "node": "8.2.1",
-    "npm": "5.3.0"
-  },
-  "lint-staged": {
-    "*.js": [
-      "npm run lint",
-      "git add"
-    ]
-  },
-  "jest": {
-    "runner": "jest-runner-eslint",
-    "displayName": "lint",
-    "testMatch": [
-      "<rootDir>/**/*.js"
-    ]
-  },
-  "dependencies": {
-    "chalk": "^2.1.0",
-    "express": "^4.15.4",
-    "ramda": "^0.24.1",
-    "twitter": "^1.7.1",
-    "ws": "^3.1.0"
-  },
-  "devDependencies": {
-    "@monolambda/eslint-config": "^1.4.5",
-    "eslint": "^4.5.0",
-    "husky": "^0.14.3",
-    "jest": "^21.0.2",
-    "jest-runner-eslint": "^0.2.0",
-    "lint-staged": "^4.0.4"
-  },
-  "optionalDependencies": {
-    "bufferutil": "^3.0.2",
-    "utf-8-validate": "^3.0.3"
-  }
+    "name": "hashtagwars-api",
+    "description": "open source back-end for hashtagwars",
+    "version": "1.0.0",
+    "author": "levsthings",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/levsthings/hashtagwars-api"
+    },
+    "main": "index.js",
+    "scripts": {
+        "start": "node src/index.js",
+        "dev": "nodemon src/index",
+        "test": "jest",
+        "lint": "eslint ./src/**/* --fix --color",
+        "precommit": "lint-staged"
+    },
+    "engines": {
+        "node": "8.2.1",
+        "npm": "5.3.0"
+    },
+    "lint-staged": {
+        "*.js": ["npm run lint", "git add"]
+    },
+    "jest": {
+        "runner": "jest-runner-eslint",
+        "displayName": "lint",
+        "testMatch": ["<rootDir>/**/*.js"]
+    },
+    "dependencies": {
+        "chalk": "^2.1.0",
+        "express": "^4.15.4",
+        "ramda": "^0.24.1",
+        "twitter": "^1.7.1",
+        "ws": "^3.1.0"
+    },
+    "devDependencies": {
+        "@monolambda/eslint-config": "^1.4.5",
+        "eslint": "^4.5.0",
+        "husky": "^0.14.3",
+        "jest": "^21.0.2",
+        "jest-runner-eslint": "^0.2.0",
+        "lint-staged": "^4.0.4"
+    },
+    "optionalDependencies": {
+        "bufferutil": "^3.0.2",
+        "utf-8-validate": "^3.0.3"
+    }
 }
